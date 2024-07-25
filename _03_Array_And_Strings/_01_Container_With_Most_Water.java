@@ -30,7 +30,7 @@ public class _01_Container_With_Most_Water {
          * - Example pairs: (1, 8), (1, 6), (1, 2), (1, 5), etc.
          * 
          * Can we do better in O(n)?
-         * Optimized Approach: O(n)
+         * Optimized Approach: O(n) => Greedy Algorithm
          * - Use two pointers, one at the beginning (start) and one at 
          *   the end (end) of the array.
          *
