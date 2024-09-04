@@ -1,34 +1,42 @@
 package _03_Array_And_Strings;
 
+/**
+ * Topic: Sorting
+*/
+
 public class _05_Max_Chunks_To_Make_Sorted {
     public static void main(String[] args) {
         /**
          * Sorting the array by breaking them into chunks:
-         * => 'n' length ka array hai aur uske andr [0 to n-1] values
-         * aane wali thi but elements humein sorted nhi mila.
-         * => For example, arr[6] = [1, 2, 0, 4, 3, 5]
-         * => Isse hum kitne hisso m baat skte hai such that harr hisse ko
-         * sort kr diya jae ki wo poora hi sort ho jae.
-         * => Bich m hum pipe lga de to sorting kr paenge:
-         * => [1, 2, 0, | 4, 3, | 5]
-         * => [0, 1, 2, | 3, 4, | 5]
-         * => Means hum isse kitne hisse m tod skte hai ki such that every
-         * part is sorted so the entire part become sorted.
+         * 
+         * 1. 'n' length ka array hai aur uske andr [0 to n-1] values aane wali thi 
+         *    but elements humein sorted nhi mila.
+         * 
+         * 2. For example, arr[6] = [1, 2, 0, 4, 3, 5] 
+         *    (a) Isse hum kitne hisso m baat skte hai such that harr hisse ko sort kr
+         *        diya jae ki wo poora hi sort ho jae.
+         *    (b) Bich m hum pipe lga de to sorting kr paenge, means hum isse kitne 
+         *        hisse m tod skte hai ki such that every part is sorted so the entire
+         *        part become sorted.
+         *           => [1, 2, 0, | 4, 3, | 5]
+         *           => [0, 1, 2, | 3, 4, | 5]
          * 
          * TC: O(n)
          * SC: O(1)
          * 
-         * Q. Pehle dkhnge kaise hm pipe lga skte hai?
-         * => arr = [3, 1, 0, 2, | 5, 6, 4, | 8, 7, | 9]
-         * idx = 0 1 2 3 4 5 6 7 8 9
-         * max = 3 3 3 3 5 6 6 8 8 9
-         * Note: max '3' hone ka mtlb hai ki avi tk maine '3' se badi value
-         * encounter nhi kiya. Aur agar ye sorted hota to iss index
-         * pe 3 hi aata aur mai 3rd index pe hi pahuch gya hu. To mai
-         * yha pe ek line khich skta hu, aur similarly aage v aise hi
-         * krnge.
-         * => Basically jb v humaara 'max' == 'idx' ho tb counter badha lo,
-         * to humaare paas utne hisse ho jaenge.
+         * Approach:
+         * 1. Pehle dkhnge kaise hm pipe lga skte hai?
+         *    => arr = [3, 1, 0, 2, | 5, 6, 4, | 8, 7, | 9]
+         *       idx =  0  1  2  3    4  5  6    7  8    9
+         *       max =  3  3  3  3    5  6  6    8  8    9
+         * 
+         *    (a) max '3' hone ka mtlb hai ki avi tk maine '3' se badi value encounter nhi
+         *        kiya. 
+         *    (b) Aur agar ye sorted hota to iss index pe 3 hi aata aur mai 3rd index pe hi
+         *        pahuch gya hu. To mai yha pe ek line khich skta hu, aur similarly aage v 
+         *        aise hi krnge.
+         *    (c) Basically jb v humaara 'max' == 'idx' ho tb counter badha lo, to humaare 
+         *        paas utne hisse ho jaenge.
          * 
          *
          * Input: arr = {4, 3, 2, 1, 0};
