@@ -40,9 +40,7 @@ public class _08_Long_Pressed_Name {
         String name = "alex";
         String typed = "aaleex";
 
-        // Pointer-1
         int i = 0; 
-        // Pointer-2
         int j = 0;
 
         while(i < typed.length()) {

@@ -1,8 +1,45 @@
 package _03_Array_And_Strings;
 
-import java.util.HashMap;
+import java.util.PriorityQueue;
 
 public class _21_Car_Pooling {
+    class Pair implements Comparable<Pair> {
+        int time;
+        int delta;
+
+        Pair(int time, int delta) {
+            this.time = time;
+            this.delta = delta;
+        }
+
+        public int compareTo(Pair o) {
+            return this.time - o.time;
+        }
+    }
+
+    public boolean carPooling(int[][] trips, int capacity) {
+        int[] map = new int[1001];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+
+        for(int[] trip : trips) {
+            pq.add(new Pair(trip[1], +trip[0]));
+            pq.add(new Pair(trip[2], -trip[0]));
+        }
+
+        int pic = 0;
+        while(pq.size() > 0) {
+            Pair rem = pq.remove();
+            pic += rem.delta;
+
+            if(pic > capacity) {
+                return false;
+            } else if(pic < 0) {
+                pic = 0;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         /**
          * Input: trips = [[2, 1, 5], [3, 3, 7]], capacity = 4
@@ -29,11 +66,23 @@ public class _21_Car_Pooling {
          *    lenge, then sbse max time le lenge fir min time se max time
          *    ki aur badh jaenge.
          * 
-         * 3:19:10 => 21 July
          * */ 
 
-        // int[] trips = [[2, 1, 5], [3, 3, 7]];
+        _21_Car_Pooling carPool = new _21_Car_Pooling();
 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        // Example 1: trips = [[2, 1, 5], [3, 3, 7]], capacity = 4
+        int[][] trips1 = {{2, 1, 5}, {3, 3, 7}};
+        int capacity1 = 4;
+
+        boolean result1 = carPool.carPooling(trips1, capacity1);
+        System.out.println("Example 1: " + result1); // Expected output: False
+
+        // Example 2: trips = [[2, 1, 5], [3, 5, 7]], capacity = 3
+        int[][] trips2 = {{2, 1, 5}, {3, 5, 7}};
+        int capacity2 = 3;
+
+        boolean result2 = carPool.carPooling(trips2, capacity2);
+        System.out.println("Example 2: " + result2); // Expected output: True
+
     }
 }

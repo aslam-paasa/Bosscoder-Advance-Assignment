@@ -3,6 +3,7 @@ package _03_Array_And_Strings;
 public class _01_Container_With_Most_Water {
     public static void main(String[] args) {
         /**
+         * Two Pointer:
          * Input: height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
          * Output: 49
          * 
