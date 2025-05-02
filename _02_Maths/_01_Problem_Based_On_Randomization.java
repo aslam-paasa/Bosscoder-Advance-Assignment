@@ -52,6 +52,9 @@ public class _01_Problem_Based_On_Randomization {
          * Using [rand6() * rand6()], we can get 12, 18. But how can
          * we get 13, 14, 15, 16, 17, which is in between 12-18.
          * => For that we add:
+         *    1. rand()6    : x%6+1       => 0%6 + 1 => 1 to 6
+         *    2. rand()6 - 1: (x%6+1) - 1 => 1 - 1 => 0 to 5
+         *    3. 
          *    rand6() - 1
          *    (a) 1 - 1 = 0 => 12 + 0 = 12
          *    (b) 2 - 1 = 1 => 12 + 1 = 13
@@ -60,7 +63,7 @@ public class _01_Problem_Based_On_Randomization {
          *    (e) 5 - 1 = 4 => 12 + 4 = 16
          *    (f) 6 - 1 = 5 => 12 + 5 = 17
          * 
-         * Formula: [[6 * rand6()] + [rand6() - 1]]
+         * Formula: [[6 * rand6()-1] + [rand6() - 1]]
          * => This formula will be generating all the possible number
          *    between 1 to 36 and on this formula we just have to do
          *    "[formula % 9] + 1" to get the answer between 1-9.
@@ -100,6 +103,7 @@ public class _01_Problem_Based_On_Randomization {
          * 6. [6 * [6 - 1]] + [6 - 1] = 35
          *    
          * Formula: ([[6 * rand6()-1] + [rand6() - 1]] % 9) + 1
+         *          ([[6 * [6 - 1]] + [6 - 1]] % 9) + 1
          * 
          * Logic:
          *    function rand9() {
